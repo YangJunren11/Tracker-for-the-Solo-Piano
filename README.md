@@ -17,8 +17,9 @@ swift build -c release
 swift test -c release -Xswiftc -enable-testing    # 23 tests, about 15 s once built
 ```
 
-Build it optimised. Unoptimised, the tests take over ten minutes, and a search of the whole piece is
-too slow to keep up with live audio.
+It is recommended to build in release mode (-c release) since debug builds are not well optimised. 
+Testing using debug build can take more than ten minutes instead of fifteen seconds. In an implemented 
+application the tracker it may lag behind the live audio.
 
 ## Using it
 
