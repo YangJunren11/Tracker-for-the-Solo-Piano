@@ -390,8 +390,10 @@ At practice tempos, on the 14 held-out takes, within a quarter note:
 | particle filter, corrected | 12.9% | 23.9% | 3.0% | 13.4% | 7.0% | 11.4% | 15.2% |
 
 The particle filter as shipped averaged 5.9%, and failed to run on 5 of the 182. These 14 takes
-were chosen as ones whose first minute this tracker already follows well, which favours Arzt's
-method.
+were chosen as ones whose first minute this tracker already follows well. That favours every
+method, and the Kalman filter most. 8 of the 14 are Bach, which it follows well: 15 of the 17 Bach
+performances in the 100, against 1 of 19 Chopin. They are also sparser than the 100, at 4.6 chords
+a second against 6.0.
 
 **Why the tracker is built on Arzt's method:**
 

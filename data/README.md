@@ -89,7 +89,8 @@ the engine's default.
 **`methods-tempo-14.csv`**: the 14 practice takes of `tempo-14.csv`, under the same 13 conditions,
 followed the same ways except `tracker_one_tempo`. An empty cell is a run that failed: the particle
 filter as shipped, 5 times. These takes were chosen as ones whose first minute the tracker already
-follows well, which favours `arzt` and `tracker`.
+follows well. That favours every method, and the Kalman filter most: 8 of the 14 are Bach, which it
+follows well, and they are sparser than the 100 performances.
 
 The tracker and Arzt runs here used the PageTurner iPad app's engine, which is this tracker's code
 rendering with Apple's sampler instead of TinySoundFont. Every rendered reference (for `tracker`,
