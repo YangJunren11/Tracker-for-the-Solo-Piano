@@ -140,6 +140,7 @@ to 3e-6, and the frames that differ are near-ties decided by that rounding.
 
 ### Getting lost, and finding the place again
 
+Inspired by Any-Time method by Arzt and Widmer (2010).
 - **A trusted place.** The tracker trusts where it is after `trustSeconds` (2 s) at confidence
   `trustConfidence` (0.3) or more, without a relocation, at a place the music could have reached from
   the last trusted one.
