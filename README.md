@@ -400,6 +400,21 @@ a second against 6.0.
 - **It follows best at tempo, and fails least.** On the 100 performances it is within a bar 90.1%
   of the time. That is ahead of Dixon's 86.6%, and well ahead of the other three. Only 4 times does
   it follow less than half of a performance, against 5, 9, 36 and 94.
+- **It follows every composer, where the Kalman filter only follows Bach.** Counting a performance
+  as followed well when it is within a bar more than 80% of the time:
+
+  | composer (performances) | Arzt | Kalman filter | Kalman filter, scaled |
+  |---|---|---|---|
+  | Bach (17) | 17 | 15 | 16 |
+  | Beethoven (19) | **19** | 3 | 9 |
+  | Chopin (19) | **17** | 1 | 6 |
+  | Schubert (14) | **13** | 2 | 9 |
+  | Liszt (13) | **12** | 1 | 1 |
+
+  Outside Bach, Arzt's method follows 78 of the 83 performances well, with a median of 95.2% within
+  a bar. The Kalman filter follows 13 as shipped, with a median of 19.6%, and 35 even with its
+  timing scaled to each piece, with a median of 62.8%. Its good results at practice tempos come from
+  a set that is mostly Bach.
 - **It is fast and steady.** In Swift it runs 51 times faster than real time. Its work per frame is
   bounded by a window of the reference. The Kalman filter updates a beam of hypotheses every 16 ms,
   and the particle filter updates 1,000 particles every frame.
