@@ -1,6 +1,9 @@
 SoloPianoTracker
 Copyright 2026 the SoloPianoTracker contributors
 
+The apps in PageTurnerApp/ are not covered by the Apache License: they have their own licence,
+PageTurnerApp/LICENSE, under which they may be used but not published or redistributed.
+
 This is a Swift port of the online time warping score follower in Matchmaker
 (https://github.com/pymatchmaker/matchmaker), Copyright 2024 The Matchmaker Development Team,
 licensed under the Apache License, Version 2.0, with the changes described in README.md.

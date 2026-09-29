@@ -35,7 +35,8 @@ tablet, open it, and allow installing apps from that source when Android asks. I
 development key, so Android may warn that the developer is unknown, and a later version signed
 differently would need this one uninstalled first. The built-in works come from PDMX (Long, Novack,
 McAuley and Berg-Kirkpatrick, 2024, CC BY 4.0), and every score in it is CC0 or public domain. The
-app's About screen carries its credits and licences.
+app's About screen carries its credits and licences. The app is free to download and use, but not to
+publish or redistribute: it has its own licence, [`PageTurnerApp/LICENSE`](PageTurnerApp/LICENSE).
 
 ## PageTurner for Windows
 
@@ -50,7 +51,8 @@ opens the one in `app`. It isn't signed, so the first time Windows may say it ha
 choose More info, then Run anyway. It needs the microphone, so let desktop apps use it under Settings,
 Privacy & security, Microphone. Your pieces, their PDFs and your notes are kept in
 `Documents\PageTurner`. The built-in works are the Android app's, and the app's About screen carries
-its credits and licences.
+its credits and licences. Like the Android app, it is free to download and use, but not to publish
+or redistribute, under [`PageTurnerApp/LICENSE`](PageTurnerApp/LICENSE).
 
 ## Using it
 
@@ -411,4 +413,6 @@ Online time warping with a step limit is Arzt & Widmer (2010). The follower is p
 [TinySoundFont](https://github.com/schellingb/TinySoundFont) (MIT). The piano is MuseScore General's
 (MIT, notices in `Piano/LICENSE.md`). The measurements use ASAP and MAESTRO (CC BY-NC-SA 4.0).
 
-This repository is under the Apache License 2.0 (`LICENSE`, `NOTICE`).
+This repository is under the Apache License 2.0 (`LICENSE`, `NOTICE`), except the apps in
+`PageTurnerApp/`, which have their own licence (`PageTurnerApp/LICENSE`): they are free to download
+and use, but not to publish or redistribute.
