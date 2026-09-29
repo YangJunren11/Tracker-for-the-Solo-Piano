@@ -7,7 +7,8 @@ It is a Swift port of the online time warping follower in
 [Matchmaker](https://github.com/pymatchmaker/matchmaker) (Arzt & Widmer, 2010), with changes for
 following a pianist who is practising: starting anywhere, stopping, going back, playing slowly, and
 playing in a noisy room. It is plain Swift and Foundation, with TinySoundFont (included) and zlib.
-It is tested on macOS, and it builds for Android with the Swift SDK for Android.
+It is tested on macOS, and it builds for Android with the Swift SDK for Android. How it compares
+with Matchmaker, performance by performance, is in [Data](#data) and [`data/`](data).
 
 ```
 swift build -c release
@@ -29,6 +30,7 @@ let plan = Plan(score: score, setup: .defaults(for: score))
 
 // The settings the figures below were measured with
 var options = FollowerOptions()
+options.calibrateSeconds = 0  // not listening to the room: see "Where the tracker does worse"
 options.localReanchor = true
 options.localReachSeconds = 1.5
 options.localImprovement = 0.7
@@ -109,8 +111,9 @@ to 3e-6, and the frames that differ are near-ties decided by that rounding.
 - **Listening to the room.** The seconds before the first note are the room with nobody playing. The
   gate is raised to the room's 99th percentile of peakiness plus `calibrationMargin`. It is never
   lowered, and never raised above `maxPeakiness` (0.7). A room above that is reported as `tooNoisy`
-  (`RoomCalibration`). This needs `calibrateSeconds` (2 s) of waiting. A recording of the room can
-  also set a level floor (`RoomNoise`), which is off by default.
+  (`RoomCalibration`). This needs `calibrateSeconds` (2 s) of waiting. It is on by default and off
+  in the settings above, because it measured worse in a real room (see "Where the tracker does
+  worse"). A recording of the room can also set a level floor (`RoomNoise`), which is off by default.
 - **Rests.** While the reference is silent and the input does not look like notes (`restPeakiness`,
   0.5), the position is held (`freezeInRests`). When playing returns after a wait longer than
   `reanchorAfterSeconds` (2 s), it picks up at the rest's first note (`reanchorAfterRest`). Releasing
@@ -187,13 +190,119 @@ under CC BY-NC-SA 4.0 and not included here.
   that costs 1 to 3.8 points by itself, so those figures are a floor. A wrong tempo marking is the
   reference rendered too fast or too slow.
 - **Room:** a recording of a real room with nobody playing: -33 dB, with mains hum at 48 Hz and a
-  cluster from 97 to 199 Hz.
+  cluster from 97 to 199 Hz. It is not included.
 
 The figures are the share of playing time in which the reported position is within a quarter note,
 a bar, or 0.5 s of the ground truth. References were rendered with FluidSynth and MuseScore General,
 as Matchmaker renders them, unless a row says TinySoundFont.
 
-### All 436 performances
+### Against Matchmaker
+
+Both followers here are this repository's `piano-tracker`, following the same reference.
+"Matchmaker" is the tracker with everything Matchmaker has no counterpart for switched off, which
+gives Matchmaker's own positions (see "What is Matchmaker's"). "Tracker" is the settings in "Using
+it". The results for every performance are in [`data/`](data), and `python3 data/summarise.py`
+prints these tables from them.
+
+**All 436 performances**, each followed from start to finish:
+
+| | Matchmaker | tracker |
+|---|---|---|
+| within a quarter note | 76.6% | **81.5%** |
+| within a bar | 88.6% | **93.7%** |
+| more than 2 bars behind | 8.14% | **3.34%** |
+| more than 2 bars ahead | 0.52% | **0.35%** |
+| performances followed within a bar less than half the time | 23 | **3** |
+| relocations landing more than 8 bars wrong | **0** | 14 |
+
+Within a bar, the tracker is better on 183 performances, by a median of 2.1 points and by over 30
+points on 17 of them. It is worse on 50, by a median of 1.3 points and by over 5 points on one. On
+the other 203 the two are within half a point.
+
+**Practising slowly**, on the 14 held-out takes, within a quarter note:
+
+| | 1.00x | 0.50x | 0.35x | 0.25x | marked 4x too fast | marked 2x too slow | speeding up, 0.4x to 1x | mean of 13 conditions |
+|---|---|---|---|---|---|---|---|---|
+| Matchmaker | 93.6% | 85.7% | 60.6% | 37.8% | 17.5% | 62.4% | 83.5% | 74.8% |
+| tracker, one tempo | 95.1% | 94.3% | 80.7% | 67.4% | 37.5% | 59.5% | **90.5%** | 83.3% |
+| **tracker** | **95.1%** | **95.1%** | **90.7%** | **91.7%** | **92.4%** | **92.9%** | 83.6% | **92.2%** |
+
+At a quarter of the speed, Matchmaker reached the end of the score before the pianist in 4 of the
+14 takes.
+
+**Restarts**, cut from the 100 tuning performances. "Found" means within a bar for 2 s running, and
+the time is the median.
+
+| | Matchmaker | tracker | tracker, told the bar |
+|---|---|---|---|
+| back six bars | 88/100, 21.2 s | 96/100, 14.7 s | **100/100, 0.2 s** |
+| back from 60% to 40% | 43/100, 103.0 s | 74/100, 63.9 s | **100/100, 0.3 s** |
+| start at 40% | 5/100, 48.3 s | 61/100, 46.0 s | **100/100, 0.0 s** |
+| relocations landing more than 8 bars wrong, over all 300 | **0** | 108 | 20 |
+
+**A noisy room**, on the eleven recordings. "Listening to the room" is the tracker with
+`calibrateSeconds` at 2, the engine's default.
+
+| | Matchmaker | tracker | tracker, listening to the room |
+|---|---|---|---|
+| room alone: stays at bar 1 | 0/11 (median bar 9) | **11/11** | **11/11** |
+| room, then the performance: within 0.5 s | 31.6% | **83.8%** | 76.8% |
+| performance alone: within 0.5 s | 82.4% | **83.9%** | **83.9%** |
+| room as loud as the playing (0 dB): within 0.5 s | 44.2% | **54.1%** | 37.0% |
+| room in a written rest for 20 s: back in place after (median, 5 recordings) | 5.2 s | **0.8 s** | **0.8 s** |
+
+### Where the tracker does worse
+
+- **Relocations that land wrong.** Matchmaker never relocates, so it cannot relocate wrongly: once
+  it is lost, it stays lost. All 14 wrong relocations on the 436 performances are in 4 in which
+  Matchmaker follows within a bar only 30% to 42% of the time: Chopin's fourth Ballade and three
+  takes of Liszt's second Ballade. None lands ahead of the music, and on two of the four the tracker
+  still gains 24 and 34 points. After a restart nobody announced, the tracker has to search, and 108
+  of its relocations over the 300 restarts land wrong. Most of them come after going back several
+  pages or starting mid-piece, where the right place is outside the bars it searches first. It
+  still finds the place far more often than Matchmaker, which never searches: 74 against 43, and 61
+  against 5.
+- **The 50 performances followed a little worse.** Each change was switched off in turn on them to
+  find which one costs:
+  - **The local re-anchor** is the cause on 16, and costs about half of all the time lost. Every 2 s it
+    moves the position to a place within 1.5 s that fits the last 2 s of playing better. Where the
+    texture repeats, as in the Berceuse's ostinato, the Gondoliera, La campanella and Scriabin's
+    op. 8 no. 11, a place a beat or two away can fit better than the right one. Across all 436
+    performances it gains more than it loses: 92.5% within a bar without it, 93.7% with it.
+  - **Stepping back** is the cause on 14. It lets the position move back where the chroma gives no
+    cue, and on these performances that cost more than it corrected.
+  - **The start gate** is the cause on 11. In three takes of the Waldstein, whose opening is
+    pianissimo, it took 1 to 6 s of quiet playing for silence, and in the worst the tracker ran 2.5
+    bars behind for 10 s. On the other eight it held nothing once the playing began: holding before
+    the first note leads to a slightly different path, which runs just over a bar behind for a few
+    seconds.
+  - **Holding in rests** is the cause on 4, and **recovery** on 1: in Schubert's first Impromptu two
+    relocations within 8 bars cost 7 points. On the remaining 4, no single change is the cause.
+- **Choosing the tempo** costs where one tempo was already close enough. At 0.60x and 0.75x it chose
+  a slower follower in 10 and 5 of the 14 takes, usually the half-speed one. It then did a little
+  worse than the score-tempo follower would have: 92.7% against 95.4%, and 93.7% against 95.7%. The choice is made once,
+  in the opening bars. So a pianist who starts at 0.4x and speeds up to full tempo stays with the
+  slow follower chosen at the start, the half-speed one in 10 of the 14 takes: 83.6%, against 90.5%
+  on one tempo. Starting again chooses again.
+  In none of the 13 conditions does it do worse than Matchmaker.
+- **One tempo, with the score marked 2x too slow**, the tracker gets 59.5% against Matchmaker's
+  62.4%. Here the pianist plays at twice the reference's tempo. No single change is responsible:
+  switching off the gate, recovery or stepping back each gives back 1.5 to 2 points. Choosing the
+  tempo takes it to 92.9%.
+- **Listening to the room** loses at 0 dB. With the room as loud as the playing from the first
+  second, it takes the noisy playing for the room, raises the gate, and then holds 30% of the frames
+  as silence. It also costs 7 points when the room comes first: 76.8% against 83.8%. That is why it
+  is off in the settings above. It was built for a room whose noise looks like notes, such as a
+  voice, and that case was not measured.
+
+### What each change is worth
+
+Each table changes one thing and keeps the rest of the tracker's settings. They were measured with
+the engine this repository was made from, which gives the same positions frame for frame on every
+run compared. Measured with this repository's binary, the last column of the first table is the
+tracker in "Against Matchmaker", at 81.5% within a quarter note.
+
+#### Recovery, on all 436 performances
 
 | | immediate search of the whole piece | bounded recovery, no re-anchor | bounded, re-anchor at any pace | **bounded, re-anchor near the rendered tempo** |
 |---|---|---|---|---|
@@ -203,10 +312,9 @@ as Matchmaker renders them, unless a row says TinySoundFont.
 | relocations landing more than 8 bars wrong | 46 | 17 | 27 | **14** |
 | ... of them ahead / more than 30 bars ahead | 30 / 21 | 1 / 0 | 3 / 0 | **0 / 0** |
 
-### Restarts
+#### Recovery after a restart
 
-These are cut from the tuning set's 100 recordings: going back six bars, going back from 60% of the
-take to 40%, and starting at 40%. "Found" means within a bar for 2 s running.
+The same restarts as above.
 
 | | immediate search: found, median | bounded: found, median | relocations more than 8 bars wrong (immediate → bounded) |
 |---|---|---|---|
@@ -215,11 +323,10 @@ take to 40%, and starting at 40%. "Found" means within a bar for 2 s running.
 | starting at 40%, not told | 85/100, 20.8 s | 61/100, 46.0 s | 16 → 60 |
 | any of them, told | 299/300, under 0.4 s | **300/300, under 0.4 s** | 45 → **20** |
 
-On the eleven recordings, plain online time warping (Matchmaker) found its place after a mid-piece
-start in 0 of 11 takes, and after a jump back in 3 of 11. Told the bar, this tracker found it in 11 of
-11 for both, with medians of 0.0 s and 0.3 s.
+Searching the whole piece at once finds a far restart sooner, but it also moves wrongly far more
+often, and 21 of its moves on the 436 performances landed more than 30 bars ahead of the music.
 
-### Small errors
+#### Small errors
 
 On the eleven recordings, at tempo, with the re-anchor running at any pace:
 
@@ -230,45 +337,12 @@ On the eleven recordings, at tempo, with the re-anchor running at any pace:
 | frames where the position stood still | 48.7% | 42.9% | **42.3%** |
 | longest freeze, averaged over takes | 2.67 s | 1.61 s | **1.46 s** |
 
-### Tempo
-
-On the 14 held-out takes, within a quarter note:
-
-| | 1.00x | 0.60x | 0.25x | marked 4x too fast | marked 2x too slow | speeding up, 0.4x to 1x | mean of 13 conditions |
-|---|---|---|---|---|---|---|---|
-| one reference, at the score's tempo | 95.1% | 95.4% | 67.5% | 38.0% | 59.5% | 90.5% | 83.3% |
-| **tempo from the opening bars** | 95.1% | 92.7% | **91.7%** | **92.4%** | **92.9%** | 83.6% | **92.2%** |
-| reference rendered at the speed played (not possible live) | 95.1% | 94.2% | 86.3% | 95.1% | 95.1% | | |
-
-At tempo, on the tuning set, following four tempos costs about one point against following one.
-
-### Noise
-
-The eleven recordings, and the room:
-
-| | room alone: stays at bar 1 | room, then the performance: within 0.5 s | performance alone: within 0.5 s |
-|---|---|---|---|
-| level threshold only | 0/11 (median bar 9, worst 97) | 54.0% | 81.7% |
-| **peakiness gate and start latch** | **11/11** | **77.9%** | **83.0%** |
-| level floor measured in the room (`RoomNoise`) | 11/11 | 76.4% | 74.4% |
-
-With the room mixed in as loud as the playing (0 dB), 67.1% is within 0.5 s with the gate, and
-54.7% without it.
-
-### Rests
-
-The room was inserted into the longest written rest of 7 recordings.
-
-| waited | without holding: drift, back in place | hold and pick up: drift, back in place | rest of the take within 0.5 s (without → with) |
-|---|---|---|---|
-| 5 s | 0.5 bars, 0.0 s | 0.5 bars, 0.4 s | 81.4% → 80.7% |
-| 20 s | 1.0 bars, 3.5 s | 0.5 bars, 0.4 s | 79.6% → 80.8% |
-| 40 s | 1.5 bars, 6.4 s | 0.5 bars, 0.4 s | 77.1% → 78.9% |
+#### Between movements
 
 Across a quiet 60 s at a movement's end, re-arming the gate took the searches of the whole piece
 from 56 to 0 and cut the CPU used by more than half, with the position unchanged.
 
-### The reference
+#### The reference
 
 On the tuning set, following four tempos, within a bar:
 
@@ -281,14 +355,14 @@ On the tuning set, following four tempos, within a bar:
 than a sampled piano on all 436 performances. The tests use it, playing the performance on a
 different setting of it.
 
-### Speed
+#### Speed
 
 Following one tempo takes about 0.07 ms of one laptop core per 23 ms hop, and following four takes
 0.1 ms. The heaviest case is searching after a jump back of several pages in a 21-minute,
 four-movement piece at four tempos. There the slowest hop takes 6.7 ms with the parallel search,
 against 257 ms on one core, one bin at a time, when 154 hops fell behind their audio.
 
-### Reading MusicXML
+#### Reading MusicXML
 
 `MusicXMLReader` was checked against the Python reader, built on partitura, that it was ported from,
 on 308 scores. 228 came out identical, and 292 agree on every bar and to within 0.5% of the notes.

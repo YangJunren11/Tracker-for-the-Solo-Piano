@@ -1,0 +1,163 @@
+performance,case,follower,furthest_bar_while_nobody_plays,bar_when_playing_starts,within_half_second,drift_in_rest_bars,back_in_place_after_s
+Bach/Prelude/bwv_848/SunY01M,performance alone,matchmaker,,,0.9054,,
+Bach/Prelude/bwv_848/SunY01M,performance alone,tracker,,,0.9675,,
+Bach/Prelude/bwv_848/SunY01M,performance alone,tracker_listening_to_the_room,,,0.9675,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,performance alone,matchmaker,,,0.8198,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,performance alone,tracker,,,0.8198,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,performance alone,tracker_listening_to_the_room,,,0.8198,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,performance alone,matchmaker,,,0.7042,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,performance alone,tracker,,,0.7306,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,performance alone,tracker_listening_to_the_room,,,0.7306,,
+Chopin/Etudes_op_10/5/LiA03M,performance alone,matchmaker,,,0.8540,,
+Chopin/Etudes_op_10/5/LiA03M,performance alone,tracker,,,0.8555,,
+Chopin/Etudes_op_10/5/LiA03M,performance alone,tracker_listening_to_the_room,,,0.8555,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,performance alone,matchmaker,,,0.8072,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,performance alone,tracker,,,0.8798,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,performance alone,tracker_listening_to_the_room,,,0.8798,,
+Liszt/Concert_Etude_S145/2/Lu03M,performance alone,matchmaker,,,0.8779,,
+Liszt/Concert_Etude_S145/2/Lu03M,performance alone,tracker,,,0.9092,,
+Liszt/Concert_Etude_S145/2/Lu03M,performance alone,tracker_listening_to_the_room,,,0.9092,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,performance alone,matchmaker,,,0.8816,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,performance alone,tracker,,,0.8672,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,performance alone,tracker_listening_to_the_room,,,0.8672,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,performance alone,matchmaker,,,0.7177,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,performance alone,tracker,,,0.7128,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,performance alone,tracker_listening_to_the_room,,,0.7128,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,performance alone,matchmaker,,,0.7269,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,performance alone,tracker,,,0.7375,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,performance alone,tracker_listening_to_the_room,,,0.7375,,
+Schubert/Moment_musical_no_3/Tetzloff09M,performance alone,matchmaker,,,0.8078,,
+Schubert/Moment_musical_no_3/Tetzloff09M,performance alone,tracker,,,0.7918,,
+Schubert/Moment_musical_no_3/Tetzloff09M,performance alone,tracker_listening_to_the_room,,,0.7918,,
+Schumann/Toccata_repeat/WangY07M,performance alone,matchmaker,,,0.9578,,
+Schumann/Toccata_repeat/WangY07M,performance alone,tracker,,,0.9595,,
+Schumann/Toccata_repeat/WangY07M,performance alone,tracker_listening_to_the_room,,,0.9595,,
+Bach/Prelude/bwv_848/SunY01M,room alone,matchmaker,16,16,,,
+Bach/Prelude/bwv_848/SunY01M,room alone,tracker,1,1,,,
+Bach/Prelude/bwv_848/SunY01M,room alone,tracker_listening_to_the_room,1,1,,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room alone,matchmaker,3,3,,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room alone,tracker,1,1,,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room alone,tracker_listening_to_the_room,1,1,,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room alone,matchmaker,9,9,,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room alone,tracker,1,1,,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room alone,tracker_listening_to_the_room,1,1,,,
+Chopin/Etudes_op_10/5/LiA03M,room alone,matchmaker,9,9,,,
+Chopin/Etudes_op_10/5/LiA03M,room alone,tracker,1,1,,,
+Chopin/Etudes_op_10/5/LiA03M,room alone,tracker_listening_to_the_room,1,1,,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room alone,matchmaker,9,3,,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room alone,tracker,1,1,,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room alone,tracker_listening_to_the_room,1,1,,,
+Liszt/Concert_Etude_S145/2/Lu03M,room alone,matchmaker,14,14,,,
+Liszt/Concert_Etude_S145/2/Lu03M,room alone,tracker,1,1,,,
+Liszt/Concert_Etude_S145/2/Lu03M,room alone,tracker_listening_to_the_room,1,1,,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room alone,matchmaker,8,8,,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room alone,tracker,1,1,,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room alone,tracker_listening_to_the_room,1,1,,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room alone,matchmaker,3,3,,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room alone,tracker,1,1,,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room alone,tracker_listening_to_the_room,1,1,,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room alone,matchmaker,4,4,,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room alone,tracker,1,1,,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room alone,tracker_listening_to_the_room,1,1,,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room alone,matchmaker,9,9,,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room alone,tracker,1,1,,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room alone,tracker_listening_to_the_room,1,1,,,
+Schumann/Toccata_repeat/WangY07M,room alone,matchmaker,11,11,,,
+Schumann/Toccata_repeat/WangY07M,room alone,tracker,1,1,,,
+Schumann/Toccata_repeat/WangY07M,room alone,tracker_listening_to_the_room,1,1,,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 20 s,matchmaker,,,0.8122,2.0,7.66
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 20 s,tracker,,,0.8218,0.0,0.76
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 20 s,tracker_listening_to_the_room,,,0.8218,0.0,0.76
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 20 s,matchmaker,,,0.7262,1.0,0.02
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 20 s,tracker,,,0.8134,1.0,0.07
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 20 s,tracker_listening_to_the_room,,,0.8134,1.0,0.07
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 20 s,matchmaker,,,0.8675,0.0,0.52
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 20 s,tracker,,,0.8666,0.0,0.28
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 20 s,tracker_listening_to_the_room,,,0.8666,0.0,0.28
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 20 s,matchmaker,,,0.6981,3.0,13.25
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 20 s,tracker,,,0.6985,3.0,12.00
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 20 s,tracker_listening_to_the_room,,,0.6985,3.0,12.00
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 20 s,matchmaker,,,0.7426,1.0,5.20
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 20 s,tracker,,,0.7126,0.0,1.97
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 20 s,tracker_listening_to_the_room,,,0.7126,0.0,1.97
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 40 s,matchmaker,,,0.8019,2.0,12.83
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 40 s,tracker,,,0.8169,0.0,0.75
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room in the longest rest for 40 s,tracker_listening_to_the_room,,,0.8169,0.0,0.75
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 40 s,matchmaker,,,0.6900,1.0,0.01
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 40 s,tracker,,,0.7805,1.0,0.06
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room in the longest rest for 40 s,tracker_listening_to_the_room,,,0.7805,1.0,0.06
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 40 s,matchmaker,,,0.8541,0.0,0.53
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 40 s,tracker,,,0.8687,0.0,0.30
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room in the longest rest for 40 s,tracker_listening_to_the_room,,,0.8687,0.0,0.30
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 40 s,matchmaker,,,0.6561,3.0,27.83
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 40 s,tracker,,,0.6335,3.0,29.38
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room in the longest rest for 40 s,tracker_listening_to_the_room,,,0.6335,3.0,29.38
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 40 s,matchmaker,,,0.7443,1.0,5.24
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 40 s,tracker,,,0.7129,0.0,1.96
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room in the longest rest for 40 s,tracker_listening_to_the_room,,,0.7129,0.0,1.96
+Bach/Prelude/bwv_848/SunY01M,room mixed in at 0 dB,matchmaker,,,0.8105,,
+Bach/Prelude/bwv_848/SunY01M,room mixed in at 0 dB,tracker,,,0.9022,,
+Bach/Prelude/bwv_848/SunY01M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.9022,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room mixed in at 0 dB,matchmaker,,,0.3115,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room mixed in at 0 dB,tracker,,,0.3369,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.0031,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room mixed in at 0 dB,matchmaker,,,0.5048,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room mixed in at 0 dB,tracker,,,0.5791,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.5791,,
+Chopin/Etudes_op_10/5/LiA03M,room mixed in at 0 dB,matchmaker,,,0.7651,,
+Chopin/Etudes_op_10/5/LiA03M,room mixed in at 0 dB,tracker,,,0.7834,,
+Chopin/Etudes_op_10/5/LiA03M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.7834,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room mixed in at 0 dB,matchmaker,,,0.7113,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room mixed in at 0 dB,tracker,,,0.7619,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.7619,,
+Liszt/Concert_Etude_S145/2/Lu03M,room mixed in at 0 dB,matchmaker,,,0.4682,,
+Liszt/Concert_Etude_S145/2/Lu03M,room mixed in at 0 dB,tracker,,,0.6132,,
+Liszt/Concert_Etude_S145/2/Lu03M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.0103,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room mixed in at 0 dB,matchmaker,,,0.0000,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room mixed in at 0 dB,tracker,,,0.1504,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.0042,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room mixed in at 0 dB,matchmaker,,,0.3965,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room mixed in at 0 dB,tracker,,,0.2660,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.0026,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room mixed in at 0 dB,matchmaker,,,0.0000,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room mixed in at 0 dB,tracker,,,0.0126,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.0061,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room mixed in at 0 dB,matchmaker,,,0.0000,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room mixed in at 0 dB,tracker,,,0.6463,,
+Schubert/Moment_musical_no_3/Tetzloff09M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.1166,,
+Schumann/Toccata_repeat/WangY07M,room mixed in at 0 dB,matchmaker,,,0.8904,,
+Schumann/Toccata_repeat/WangY07M,room mixed in at 0 dB,tracker,,,0.8960,,
+Schumann/Toccata_repeat/WangY07M,room mixed in at 0 dB,tracker_listening_to_the_room,,,0.8960,,
+Bach/Prelude/bwv_848/SunY01M,"room, then the performance",matchmaker,16,16,0.0000,,
+Bach/Prelude/bwv_848/SunY01M,"room, then the performance",tracker,1,1,0.9770,,
+Bach/Prelude/bwv_848/SunY01M,"room, then the performance",tracker_listening_to_the_room,1,1,0.9781,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,"room, then the performance",matchmaker,3,3,0.7611,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,"room, then the performance",tracker,1,1,0.8403,,
+Beethoven/Piano_Sonatas/26-1/HuNY02M,"room, then the performance",tracker_listening_to_the_room,1,1,0.6896,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,"room, then the performance",matchmaker,9,9,0.6487,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,"room, then the performance",tracker,1,1,0.7288,,
+Beethoven/Piano_Sonatas/31-2/ADIG05M,"room, then the performance",tracker_listening_to_the_room,1,1,0.7656,,
+Chopin/Etudes_op_10/5/LiA03M,"room, then the performance",matchmaker,9,9,0.0000,,
+Chopin/Etudes_op_10/5/LiA03M,"room, then the performance",tracker,1,1,0.8472,,
+Chopin/Etudes_op_10/5/LiA03M,"room, then the performance",tracker_listening_to_the_room,1,1,0.8472,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,"room, then the performance",matchmaker,9,3,0.4741,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,"room, then the performance",tracker,1,1,0.8837,,
+Haydn/Keyboard_Sonatas/39-1/Yarden07M,"room, then the performance",tracker_listening_to_the_room,1,1,0.8837,,
+Liszt/Concert_Etude_S145/2/Lu03M,"room, then the performance",matchmaker,14,14,0.0000,,
+Liszt/Concert_Etude_S145/2/Lu03M,"room, then the performance",tracker,1,1,0.9085,,
+Liszt/Concert_Etude_S145/2/Lu03M,"room, then the performance",tracker_listening_to_the_room,1,1,0.9085,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,"room, then the performance",matchmaker,8,8,0.0000,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,"room, then the performance",tracker,1,1,0.8662,,
+Liszt/Gran_Etudes_de_Paganini/2_La_campanella/BuiJL03M,"room, then the performance",tracker_listening_to_the_room,1,1,0.8663,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,"room, then the performance",matchmaker,3,3,0.6864,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,"room, then the performance",tracker,1,1,0.7122,,
+Rachmaninoff/Preludes_op_23/4/ChenGuang12M,"room, then the performance",tracker_listening_to_the_room,1,1,0.2963,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,"room, then the performance",matchmaker,4,4,0.0000,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,"room, then the performance",tracker,1,1,0.7013,,
+Rachmaninoff/Preludes_op_32/5/Namirovsky06M,"room, then the performance",tracker_listening_to_the_room,1,1,0.5213,,
+Schubert/Moment_musical_no_3/Tetzloff09M,"room, then the performance",matchmaker,9,9,0.0204,,
+Schubert/Moment_musical_no_3/Tetzloff09M,"room, then the performance",tracker,1,1,0.7872,,
+Schubert/Moment_musical_no_3/Tetzloff09M,"room, then the performance",tracker_listening_to_the_room,1,1,0.7278,,
+Schumann/Toccata_repeat/WangY07M,"room, then the performance",matchmaker,11,11,0.8813,,
+Schumann/Toccata_repeat/WangY07M,"room, then the performance",tracker,1,1,0.9608,,
+Schumann/Toccata_repeat/WangY07M,"room, then the performance",tracker_listening_to_the_room,1,1,0.9608,,
