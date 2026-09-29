@@ -1,0 +1,16 @@
+SoloPianoTracker
+Copyright 2026 the SoloPianoTracker contributors
+
+This is a Swift port of the online time warping score follower in Matchmaker
+(https://github.com/pymatchmaker/matchmaker), Copyright 2024 The Matchmaker Development Team,
+licensed under the Apache License, Version 2.0, with the changes described in README.md.
+
+The chroma features follow librosa's chroma_stft (https://librosa.org),
+Copyright (c) 2013--2023, librosa development team, ISC License.
+
+Sources/CTinySoundFont/include/tsf.h is TinySoundFont v0.9
+(https://github.com/schellingb/TinySoundFont), Copyright (C) 2017-2025 Bernhard Schelling, based on
+SFZero, Copyright (C) 2012 Steve Folta; MIT License, in the file.
+
+Piano/piano.sf2 is derived from MuseScore_General.sf3 v0.2, MIT License; its acknowledgements and
+notices are in Piano/LICENSE.md.
