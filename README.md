@@ -100,8 +100,6 @@ to 3e-6, and the frames that differ are near-ties decided by that rounding.
 
 ### Silence and noise
 
-Matchmaker has none of these.
-
 - **A gate on what looks like notes** (`minPeakiness`, 0.62). Chroma is normalised per frame, so a
   frame of hum comes out as every pitch class at once and matches anything. A frame counts as playing
   only if its chroma is peaked, measured as 1 minus the mean of the normalised chroma. Mains hum
@@ -119,8 +117,6 @@ Matchmaker has none of these.
   the hold takes `resumeFrames` (3) frames in a row above `minPeakiness`.
 
 ### Getting lost, and finding the place again
-
-Matchmaker has no recovery.
 
 - **A trusted place.** The tracker trusts where it is after `trustSeconds` (2 s) at confidence
   `trustConfidence` (0.3) or more, without a relocation, at a place the music could have reached from
