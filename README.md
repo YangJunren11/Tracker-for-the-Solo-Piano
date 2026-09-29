@@ -21,6 +21,22 @@ It is recommended to build in release mode (-c release) since debug builds are n
 Testing using debug build can take more than ten minutes instead of fifteen seconds. In an implemented 
 application the tracker it may lag behind the live audio.
 
+## PageTurner for Android
+
+[`PageTurnerApp/Android/PageTurner.apk`](PageTurnerApp/Android/PageTurner.apk) is PageTurner, an
+app for Android tablets built on this tracker. It listens as you play and turns the pages of your
+PDF for you, or scrolls it. It finds your tempo from the first few bars, from a quarter of the speed
+to twice as fast, so slow practice works too. It starts from whichever page you turn to, and finds
+its place again if you go back or skip ahead. Everything runs on the tablet, and the microphone is
+used only to follow your playing; nothing is sent anywhere. It has 55 public domain works built in,
+and you can add your own as MusicXML (.xml, .musicxml or .mxl) together with your PDF. It needs
+Android 8.0 or later on a 64-bit ARM device. It isn't on Google Play: download the file on the
+tablet, open it, and allow installing apps from that source when Android asks. It's signed with a
+development key, so Android may warn that the developer is unknown, and a later version signed
+differently would need this one uninstalled first. The built-in works come from PDMX (Long, Novack,
+McAuley and Berg-Kirkpatrick, 2024, CC BY 4.0), and every score in it is CC0 or public domain. The
+app's About screen carries its credits and licences.
+
 ## Using it
 
 ```swift
