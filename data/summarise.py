@@ -1,4 +1,5 @@
-"""The README's "Against Matchmaker" tables, computed from the CSV files beside this one.
+"""The README's "Against Matchmaker" and "Matchmaker's other methods" tables, computed from the CSV
+files beside this one.
 
   python3 data/summarise.py
 """
@@ -83,8 +84,36 @@ def noise():
         print(f"  {case:38}" + "  |  ".join(cells))
 
 
+METHODS = ["tracker", "tracker_one_tempo", "arzt", "dixon", "outer_product_hmm", "kalman_filter",
+           "kalman_filter_scaled", "particle_filter", "particle_filter_corrected"]
+
+
+def methods_100():
+    rs = rows("methods-100.csv")
+    print(f"\nMatchmaker's methods: {len(rs)} performances at tempo")
+    for m in METHODS:
+        bars = [num(r[f"{m}_within_bar"]) for r in rs]
+        print(f"  {m:26}{weighted(rs, f'{m}_within_quarter'):>8.1%}{weighted(rs, f'{m}_within_bar'):>8.1%}"
+              f"   followed less than half the time: {sum(b < 0.5 for b in bars)}")
+
+
+def methods_tempo():
+    rs = rows("methods-tempo-14.csv")
+    conditions = list(dict.fromkeys(r["condition"] for r in rs))
+    print(f"\nMatchmaker's methods at practice tempos: {len({r['performance'] for r in rs})} takes, within a quarter note")
+    print(f"  {'':26}" + "".join(f"{c[:10]:>11}" for c in conditions) + f"{'mean':>8}")
+    for m in [m for m in METHODS if m != "tracker_one_tempo"]:
+        means = []
+        for c in conditions:
+            vals = [num(r[f"{m}_within_quarter"]) for r in rs if r["condition"] == c and r[f"{m}_within_quarter"] != ""]
+            means.append(statistics.mean(vals) if vals else float("nan"))
+        print(f"  {m:26}" + "".join(f"{x:11.1%}" for x in means) + f"{statistics.mean(means):8.1%}")
+
+
 if __name__ == "__main__":
     all_436()
     tempo()
     restarts()
     noise()
+    methods_100()
+    methods_tempo()

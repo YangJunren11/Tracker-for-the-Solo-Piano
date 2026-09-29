@@ -116,6 +116,9 @@ to 100% of frames in each of 7 ASAP recordings, and is never more than 2 frames 
 share of time within 0.5 s is the same to a tenth of a percent in every one. The chroma features agree
 to 3e-6, and the frames that differ are near-ties decided by that rounding.
 
+Matchmaker has four other methods for following audio. How each compares, and why the tracker is
+built on Arzt's, is in [Matchmaker's other methods, and why Arzt's](#matchmakers-other-methods-and-why-arzts).
+
 ## What changed
 
 ### The alignment
@@ -331,6 +334,93 @@ the time is the median.
   as silence. It also costs 7 points when the room comes first: 76.8% against 83.8%. That is why it
   is off in the settings above. It was built for a room whose noise looks like notes, such as a
   voice, and that case was not measured.
+
+### Matchmaker's other methods, and why Arzt's
+
+Matchmaker has five methods for following audio: Arzt's and Dixon's online time warping, an
+outer-product hidden Markov model (Nakamura et al., 2016), a switching Kalman filter (Jiang &
+Raphael, 2020) and a particle filter (Duan & Pardo, 2011). Each was run with Matchmaker's own
+settings on the 100 tuning performances at tempo, and on the 14 practice takes. "Arzt" is this
+tracker with everything Matchmaker lacks switched off, which gives Matchmaker's own positions (see
+"What is Matchmaker's"). The other four are Matchmaker's own Python (version 0.3.0). Three methods
+follow a rendered reference: Arzt, Dixon and the particle filter. For these, the reference was
+rendered as the PageTurner iPad app renders it, with a sampler playing the bundled piano, not with
+FluidSynth as elsewhere in this README. The outer-product HMM and the Kalman filter work from the
+score's notes and render nothing.
+
+Two methods needed a second run to be fair:
+
+- **The particle filter as shipped has a bug.** To judge a position, it looks up the score's sound
+  there by counting note onsets, then reads that count as a frame of the rendered reference. The
+  40th note is not the 40th frame. The corrected version maps each position to the reference
+  frame at that time.
+- **The Kalman filter lets each chord's timing vary by 5% of a whole note.** Every method here is
+  given the reference as a MIDI file at 60 bpm, where a whole note always lasts 4 s. In fast music
+  that allowance was far larger than the model intends. "Scaled" measures it in the piece's own
+  notes instead.
+
+At tempo, on the 100 performances:
+
+| | within a quarter note | within a bar | followed less than half the time | times faster than real time |
+|---|---|---|---|---|
+| **tracker** (four tempos, as the apps run it) | 77.0% | 91.3% | **1** | 12× (Swift, including rendering four references) |
+| tracker, one tempo | **78.6%** | **92.7%** | **1** | |
+| Arzt | 75.5% | 90.1% | 4 | 51× (Swift) |
+| Dixon | 73.9% | 86.6% | 5 | 4.4× (Python) |
+| outer-product HMM | 63.9% | 77.9% | 9 | 1.8× (Python) |
+| Kalman filter | 30.1% | 34.0% | 66 | 5.5× (Python) |
+| Kalman filter, scaled | 51.8% | 57.5% | 36 | 7.4× (Python) |
+| particle filter, as shipped | 2.6% | 7.5% | 98 | 1.2× (Python) |
+| particle filter, corrected | 3.9% | 6.9% | 94 | 35× (Python, all 1,000 particles at once) |
+
+With this rendering, the tracker leads Arzt by 1.2 points within a bar with four tempos, and by 2.6
+with one. With the FluidSynth reference used in "Against Matchmaker", the lead on these same 100
+performances is 6.0 points.
+
+At practice tempos, on the 14 held-out takes, within a quarter note:
+
+| | 1.00x | 0.50x | 0.25x | marked 4x too fast | marked 2x too slow | speeding up, 0.4x to 1x | mean of 13 conditions |
+|---|---|---|---|---|---|---|---|
+| **tracker** | 94.1% | **92.5%** | **90.0%** | **92.4%** | 91.6% | 81.9% | **90.4%** |
+| Arzt | 91.5% | 78.8% | 36.1% | 16.1% | 64.5% | 69.0% | 70.8% |
+| Dixon | 89.2% | 71.8% | 27.0% | 42.1% | 95.5% | **83.7%** | 71.7% |
+| outer-product HMM | 83.8% | 60.8% | 47.6% | 25.0% | 86.4% | 71.5% | 64.6% |
+| Kalman filter | 95.7% | 75.7% | 16.8% | 81.4% | 92.0% | 73.4% | 80.2% |
+| Kalman filter, scaled | **97.1%** | 57.1% | 7.3% | 7.1% | **97.2%** | 44.0% | 66.8% |
+| particle filter, corrected | 12.9% | 23.9% | 3.0% | 13.4% | 7.0% | 11.4% | 15.2% |
+
+The particle filter as shipped averaged 5.9%, and failed to run on 5 of the 182. These 14 takes
+were chosen as ones whose first minute this tracker already follows well, which favours Arzt's
+method.
+
+**Why the tracker is built on Arzt's method:**
+
+- **It follows best at tempo, and fails least.** On the 100 performances it is within a bar 90.1%
+  of the time. That is ahead of Dixon's 86.6%, and well ahead of the other three. Only 4 times does
+  it follow less than half of a performance, against 5, 9, 36 and 94.
+- **It is fast and steady.** In Swift it runs 51 times faster than real time. Its work per frame is
+  bounded by a window of the reference. The Kalman filter updates a beam of hypotheses every 16 ms,
+  and the particle filter updates 1,000 particles every frame.
+- **It is deterministic.** The same input always gives the same positions, so every change here
+  could be checked frame by frame against Matchmaker. The particle filter is random: one
+  performance scored 84.5% on one run and 75.3% on the next.
+- **Its single path through the reference is what the tracker's changes build on.** Recovery tries
+  a candidate on a second path over the same reference. Choosing the tempo runs followers against
+  references at different tempos. Stepping back and the local re-anchor act on the path itself.
+  Together they take Arzt's method from 70.8% to 90.4% at practice tempos, ahead of every method
+  here.
+
+**What the others do better.** The Kalman filter models the tempo, and while it holds on it is the
+most precise of all. At normal speed on the practice takes, it is within a quarter note 97.1% of
+the time scaled and 95.7% as shipped, against 94.1% for the tracker and 91.5% for Arzt. Scaled, it
+is closer than Arzt within a quarter note on 41 of the 100 performances. It copes with a wrong tempo
+marking without help, at 81.4% when the score is marked 4x too fast, against 16.1% for Arzt. But as
+shipped it loses fast, dense music within seconds and never comes back. Its timing allowance also trades one
+case for another: scaled to the piece, it follows fast music better (57.5% against 34.0% within a
+bar at tempo), and slow practice worse (66.8% against 80.2%). Its precision makes it the method
+worth revisiting for accompaniment, where timing matters most. Dixon copes best with a pianist
+speeding up during the take, at 83.7%. Whether the tracker's changes would lift another method as
+far as they lift Arzt's was not measured.
 
 ### What each change is worth
 

@@ -1,10 +1,11 @@
 # Data
 
-Per-performance results behind the README's "Against Matchmaker" tables. `python3 summarise.py`
-prints those tables from these files.
+Per-performance results behind the README's "Against Matchmaker" and "Matchmaker's other methods"
+tables. `python3 summarise.py` prints those tables from these files.
 
-Everything here was measured with this repository's `piano-tracker` (commit 8a1a2f2), run by a
-Python harness that is not part of this repository. The recordings and scores are
+The first four files below were measured with this repository's `piano-tracker` (commit 8a1a2f2);
+the two `methods-` files as described under their own heading. Both were run by a Python harness
+that is not part of this repository. The recordings and scores are
 [ASAP](https://github.com/fosfrancesco/asap-dataset)'s and [MAESTRO](https://magenta.tensorflow.org/datasets/maestro)'s
 (CC BY-NC-SA 4.0), and are not included. A performance is named by its path in ASAP, without `.wav`.
 
@@ -69,3 +70,30 @@ The columns are `furthest_bar_while_nobody_plays`, `bar_when_playing_starts`, `w
 `drift_in_rest_bars` and `back_in_place_after_s` (within 1 s of the truth for 2 s
 running, after the wait). `tracker_listening_to_the_room` is the tracker with `--calibrate-seconds 2`,
 the engine's default.
+
+## Matchmaker's methods
+
+**`methods-100.csv`**: the 100 tuning performances at tempo, each followed nine ways, with
+`within_quarter` and `within_bar` for each:
+- `tracker`: this tracker as the apps run it, following four tempos (`--members 2,1,0.5,0.25`).
+- `tracker_one_tempo`: the same, on one tempo.
+- `arzt`: the tracker with everything Matchmaker lacks switched off, which gives Matchmaker's own
+  positions.
+- `dixon`, `outer_product_hmm`, `kalman_filter`, `particle_filter`: Matchmaker 0.3.0's own Python,
+  with its default settings.
+- `kalman_filter_scaled`: the Kalman filter with its onset jitter, 5% of a whole note, measured in
+  the piece's own notes: `sigma_eps_scale` multiplied by the reference's seconds per quarter note.
+- `particle_filter_corrected`: the particle filter with its reference lookup mapping each position
+  to the reference frame at that time, where as shipped it indexes the frames by note count.
+
+**`methods-tempo-14.csv`**: the 14 practice takes of `tempo-14.csv`, under the same 13 conditions,
+followed the same ways except `tracker_one_tempo`. An empty cell is a run that failed: the particle
+filter as shipped, 5 times. These takes were chosen as ones whose first minute the tracker already
+follows well, which favours `arzt` and `tracker`.
+
+The tracker and Arzt runs here used the PageTurner iPad app's engine, which is this tracker's code
+rendering with Apple's sampler instead of TinySoundFont. Every rendered reference (for `tracker`,
+`arzt`, `dixon` and the particle filter) is the score's notes played on the bundled piano by that
+sampler, not by FluidSynth. The outer-product HMM and the Kalman filter work from the score's notes
+and render nothing. Ground truth and measures are as above.
+
