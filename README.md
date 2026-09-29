@@ -40,13 +40,10 @@ app's About screen carries its credits and licences.
 ## PageTurner for Windows
 
 [`PageTurnerApp/Windows/PageTurner-Windows-x64.zip`](PageTurnerApp/Windows/PageTurner-Windows-x64.zip)
-is the same app for Windows tablets and PCs. It does everything the Android app does: it follows
-your playing and turns or scrolls your PDF, finds your tempo from the first few bars, starts from
-whichever page you turn to, and finds its place again if you go back or skip ahead. You can write on
-the score with a pen, a finger or a mouse, and a page-turner pedal, the arrow keys or Page Up and Page
-Down turn the pages too. It runs this tracker's follower compiled for Windows, playing the piano with
+is the same app for Windows tablets and PCs. It does everything the Android app does.
+It runs this tracker's follower compiled for Windows, playing the piano with
 a SoundFont player of its own in place of TinySoundFont. Everything runs on the computer, and the
-microphone is used only to follow your playing; nothing is sent anywhere. It needs 64-bit Windows 10
+microphone is used only to follow your playing. It needs 64-bit Windows 10
 or 11, and nothing else installed. Download the zip, extract it (right-click, Extract All), and open
 `PageTurner.exe` at the top of the extracted folder; keep the folder together, because that program
 opens the one in `app`. It isn't signed, so the first time Windows may say it has protected your PC:
