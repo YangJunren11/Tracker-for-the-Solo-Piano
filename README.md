@@ -5,8 +5,10 @@ from a microphone, and it reports the bar being played about 40 times a second.
 
 It is a Swift port of the online time warping follower in
 [Matchmaker](https://github.com/pymatchmaker/matchmaker) (Arzt & Widmer, 2010), with changes for
-following a pianist who is practising: starting anywhere, stopping, going back, playing slowly, and
-playing in a noisy room. It is plain Swift and Foundation, with TinySoundFont (included) and zlib.
+following a pianist who is practising. These changes include a pace-gated re-anchor, cost 
+normalisation after relocation, a parallel tempo search and a noise gate before playing starts and
+between movements.
+It is plain Swift and Foundation, with TinySoundFont (included) and zlib.
 It is tested on macOS, and it builds for Android with the Swift SDK for Android. How it compares
 with Matchmaker, performance by performance, is in [Data](#data) and [`data/`](data).
 
