@@ -253,15 +253,15 @@ the time is the median.
 
 ### Where the tracker does worse
 
-- **Relocations that land wrong.** Matchmaker never relocates, so it cannot relocate wrongly: once
-  it is lost, it stays lost. All 14 wrong relocations on the 436 performances are in 4 in which
-  Matchmaker follows within a bar only 30% to 42% of the time: Chopin's fourth Ballade and three
-  takes of Liszt's second Ballade. None lands ahead of the music, and on two of the four the tracker
+- **Relocations that land wrong.** Plain online time warping, as measured here, never relocates,
+  so it cannot relocate wrongly: once it is lost, it stays lost. All 14 wrong relocations on the 436
+  performances are in 4 in which Matchmaker follows within a bar only 30% to 42% of the time:
+  Chopin's fourth Ballade and three takes of Liszt's second Ballade. None lands ahead of the music, and on two of the four the tracker
   still gains 24 and 34 points. After a restart nobody announced, the tracker has to search, and 108
   of its relocations over the 300 restarts land wrong. Most of them come after going back several
   pages or starting mid-piece, where the right place is outside the bars it searches first. It
-  still finds the place far more often than Matchmaker, which never searches: 74 against 43, and 61
-  against 5.
+  still finds the place far more often than plain online time warping, which does not search: 74
+  against 43, and 61 against 5.
 - **The 50 performances followed a little worse.** Each change was switched off in turn on them to
   find which one costs:
   - **The local re-anchor** is the cause on 16, and costs about half of all the time lost. Every 2 s it
