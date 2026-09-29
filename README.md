@@ -400,7 +400,7 @@ a second against 6.0.
 - **It follows best at tempo, and fails least.** On the 100 performances it is within a bar 90.1%
   of the time. That is ahead of Dixon's 86.6%, and well ahead of the other three. Only 4 times does
   it follow less than half of a performance, against 5, 9, 36 and 94.
-- **It follows every composer, where the Kalman filter only follows Bach.** Counting a performance
+- **It follows every composer well.** Counting a performance
   as followed well when it is within a bar more than 80% of the time:
 
   | composer (performances) | Arzt | Kalman filter | Kalman filter, scaled |
@@ -411,7 +411,7 @@ a second against 6.0.
   | Schubert (14) | **13** | 2 | 9 |
   | Liszt (13) | **12** | 1 | 1 |
 
-  Outside Bach, Arzt's method follows 78 of the 83 performances well, with a median of 95.2% within
+  Outside Bach, Arzt's method follows 78 of the 82 performances well, with a median of 95.2% within
   a bar. The Kalman filter follows 13 as shipped, with a median of 19.6%, and 35 even with its
   timing scaled to each piece, with a median of 62.8%. Its good results at practice tempos come from
   a set that is mostly Bach.
