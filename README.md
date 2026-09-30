@@ -9,7 +9,7 @@ following a pianist who is practising. These changes include a pace-gated re-anc
 normalisation after relocation, a parallel tempo search and a noise gate before playing starts and
 between movements.
 It is plain Swift and Foundation, with TinySoundFont (included) and zlib.
-It is tested on macOS, and it builds for Android with the Swift SDK for Android. How it compares
+It is tested on macOS and Windows. How it compares
 with Matchmaker, performance by performance, is in [Data](#data) and [`data/`](data).
 
 ```
