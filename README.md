@@ -34,7 +34,7 @@ and you can add your own as MusicXML (.xml, .musicxml or .mxl) together with you
 The first time a score opens, it counts the bars on each page and fills in the bar every page starts with (beta),
 marking the pages it is unsure of for you to check; correcting one moves the pages after it. The
 counting network is published on its own, in
-[Grand Staff Bar Counter for PDFs](https://github.com/YangJunren11/Grand-Staff-Bar-counter-for-PDFs). 
+[Bar Counter for PDF Piano Scores](https://github.com/YangJunren11/Bar-counter-for-PDF-Piano-Scores). 
 
 It needs Android 8.0 or later on a 64-bit ARM device. It isn't on Google Play: download the file on the
 tablet, open it, and allow installing apps from that source when Android asks. It's signed with a
