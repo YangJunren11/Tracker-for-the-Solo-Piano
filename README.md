@@ -29,13 +29,15 @@ PDF for you, or scrolls it. It finds your tempo from the first few bars, from a 
 to twice as fast, so slow practice works too. It starts from whichever page you turn to, and finds
 its place again if you go back or skip ahead. Everything runs on the tablet, and the microphone is
 used only to follow your playing; nothing is sent anywhere. It has 55 public domain works built in,
-and you can add your own as MusicXML (.xml, .musicxml or .mxl) together with your PDF. The first time
-a score opens, it counts the bars on each page and fills in the bar every page starts with (beta),
+and you can add your own as MusicXML (.xml, .musicxml or .mxl) together with your PDF. 
+
+The first time a score opens, it counts the bars on each page and fills in the bar every page starts with (beta),
 marking the pages it is unsure of for you to check; correcting one moves the pages after it. The
 counting network is published on its own, in
 [Grand Staff Bar Counter for PDFs](https://github.com/YangJunren11/Grand-Staff-Bar-counter-for-PDFs),
-under CC BY-NC-SA 4.0. It needs
-Android 8.0 or later on a 64-bit ARM device. It isn't on Google Play: download the file on the
+under CC BY-NC-SA 4.0. 
+
+It needs Android 8.0 or later on a 64-bit ARM device. It isn't on Google Play: download the file on the
 tablet, open it, and allow installing apps from that source when Android asks. It's signed with a
 development key, so Android may warn that the developer is unknown, and a later version signed
 differently would need this one uninstalled first. The built-in works come from PDMX (Long, Novack,
